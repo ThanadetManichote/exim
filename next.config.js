@@ -7,16 +7,31 @@ module.exports = () => {
   const path = require('path')
   // Where your antd-custom.less file lives
   const themeVariables = lessToJS(
-    fs.readFileSync(path.resolve(__dirname, './static/styles/antd-custom.less'), 'utf8')
+    fs.readFileSync(path.resolve(__dirname, './static/styles/antd-custom.less'), 'utf8'),
   )
   // fix: prevents error when .less files are required by node
   if (typeof require !== 'undefined') {
-    require.extensions['.less'] = file => {}
+    require.extensions['.less'] = (file) => {}
   }
-  return withLess(withCss({
-    lessLoaderOptions: {
-      javascriptEnabled: true,
-      modifyVars: themeVariables // make your antd custom effective
-    }
-  }))
-};
+  return withCss(
+    withLess({
+      lessLoaderOptions: {
+        javascriptEnabled: true,
+        modifyVars: themeVariables, // make your antd custom effective
+      },
+      webpack: function(config) {
+        config.module.rules.push({
+          test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
+          use: {
+            loader: 'url-loader',
+            options: {
+              limit: 100000,
+              name: '[name].[ext]',
+            },
+          },
+        })
+        return config
+      },
+    }),
+  )
+}

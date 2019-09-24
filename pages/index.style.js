@@ -15,9 +15,9 @@ export const BackTopWrapper = styled.div`
 // `
 
 export const HelloWorldWrapper = styled.div`
-  color:green;
+  color: green;
   p {
-    font-size:200px;
+    font-size: 200px;
   }
 `
 

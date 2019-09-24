@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import App, { Container } from 'next/app'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
@@ -46,7 +46,7 @@ class MyApp extends App {
               <Component {...pageProps} />
             </Layout>
           </ThemeProvider>
-          <GlobalStyle/>
+          <GlobalStyle />
         </Provider>
       </Container>
     )
@@ -58,6 +58,4 @@ export default withRedux(initStore, {
   deserializeState: (state) => fromJS(state),
 })(MyApp)
 
-
 // export default MyApp
-
