@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "static/*": ["./static/*"],
+      "api/*": ["./src/apollo/*"],
+      "apollo/*": ["./src/apollo/*"],
+      "redux/*": ["./src/redux/*"],
+      "components/*": ["./src/components/*"],
+      "graphql/*": ["./src/graphql/*"],
+      "helpers/*": ["./src/helpers/*"],
+      "hocs/*": ["./src/hocs/*"],
+      "styles/*": ["./src/styles/*"]
+    }
+  }
+}
