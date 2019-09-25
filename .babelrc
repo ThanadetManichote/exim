@@ -1,25 +1,28 @@
 {
   "presets": ["next/babel"],
   "plugins": [
+    ["@babel/plugin-proposal-optional-chaining"],
     [
-      "import", {
+      "import",
+      {
         "libraryName": "antd",
         "style": true
-      },
-    ],[
+      }
+    ],
+    [
       "styled-components",
       {
         "ssr": true,
         "displayName": false,
         "preprocess": false,
-        "minify": true,
-      },
+        "minify": true
+      }
     ],
     [
       "babel-plugin-module-resolver",
       {
-        "root": [".", "./src"],
-      },
-    ],
+        "root": [".", "./src"]
+      }
+    ]
   ]
 }
